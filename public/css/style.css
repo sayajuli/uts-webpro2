@@ -1,0 +1,174 @@
+body {
+    background-color: #f4f7fb;
+    min-height: 100vh;
+}
+
+body:not(.app-shell) {
+    background-image: url('../img/welcome-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+}
+
+body:not(.app-shell)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    pointer-events: none;
+}
+
+body:not(.app-shell) > * {
+    position: relative;
+    z-index: 2;
+}
+
+body:not(.app-shell) h1 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    width: 300px;
+    min-width: 300px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+    color: white;
+    box-shadow: 10px 0 30px rgba(15, 23, 42, 0.12);
+}
+
+.sidebar .nav-link {
+    color: rgba(255,255,255,.78);
+    padding: 0.9rem 1rem;
+    border-radius: 0.75rem;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}
+
+.sidebar .nav-link:hover {
+    color: white;
+    background-color: rgba(255,255,255,.12);
+}
+
+.sidebar .nav-link.active {
+    color: white;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.sidebar .nav-link i {
+    margin-right: 0.75rem;
+    width: 20px;
+}
+
+.main-panel {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 2rem;
+}
+
+.content {
+    flex: 1;
+    width: 100%;
+    padding: 2rem;
+}
+
+.content > * {
+    width: 100%;
+}
+
+.content h1 {
+    color: #111827;
+    text-shadow: none;
+    font-weight: 700;
+}
+
+.content .card {
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.content .table th,
+.content .table td {
+    white-space: nowrap;
+}
+
+.app-pagination .pagination {
+    margin-bottom: 0;
+    gap: 0.35rem;
+}
+
+.app-pagination .page-item .page-link {
+    border-radius: 0.65rem;
+    border: 1px solid #dbe3f0;
+    color: #334155;
+    font-size: 0.95rem;
+    padding: 0.45rem 0.8rem;
+    line-height: 1.2;
+    min-width: 42px;
+    text-align: center;
+    box-shadow: none;
+}
+
+.app-pagination .page-item.active .page-link {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+}
+
+.app-pagination .page-item.disabled .page-link {
+    color: #94a3b8;
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.app-pagination .page-item:not(.active):not(.disabled) .page-link:hover {
+    background-color: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        min-width: 300px;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .topbar,
+    .content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .app-pagination .pagination {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
